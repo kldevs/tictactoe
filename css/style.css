@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: gray;
+}
+
+section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: space-between;
+  background: black;
+  width: 330px;
+  height: 120px;
+}
+
+.tile {
+  background: white;
+  height: 100px;
+  width: 100px;
+}
