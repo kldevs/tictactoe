@@ -9,7 +9,6 @@ class TileObject {
   getValue(){
     return this.value
   }
-
 }
 
 let endGame = false
@@ -56,12 +55,13 @@ function onClick(i) {
   if(tile[i].value === "X" || tile[i].value === "O") {
     console.log('Box taken. Please choose another box.')
   } else {
-    console.log(`${currentTurn} clicked tile[${i}]`)
     tile[i].setValue(currentTurn)
+    console.table(tile)
     checkWin()
-    changeTurn()
     checkBoardFull()
+    changeTurn()
   }
+  
 }
 
 document.querySelector('#t0').addEventListener('click', tileClick0)
@@ -74,20 +74,18 @@ document.querySelector('#t6').addEventListener('click', tileClick6)
 document.querySelector('#t7').addEventListener('click', tileClick7)
 document.querySelector('#t8').addEventListener('click', tileClick8)
 
-
-
-
 function checkWin(){
-  if (tile[0].value === tile[1].value === tile[2].value || 
-      tile[3].value === tile[4].value === tile[5].value || 
-      tile[6].value === tile[7].value === tile[8].value || 
-      tile[0].value === tile[3].value === tile[6].value || 
-      tile[1].value === tile[4].value === tile[7].value || 
-      tile[2].value === tile[5].value === tile[8].value || 
-      tile[0].value === tile[4].value === tile[8].value || 
-      tile[2].value === tile[4].value === tile[6].value){
-          console.log(`Player ${currentTurn} wins!`)
-      }
+    if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
+        tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
+        tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
+        tile[0].value === currentTurn && tile[3].value === currentTurn && tile[6].value === currentTurn || 
+        tile[1].value === currentTurn && tile[4].value === currentTurn && tile[7].value === currentTurn || 
+        tile[2].value === currentTurn && tile[5].value === currentTurn && tile[8].value === currentTurn || 
+        tile[0].value === currentTurn && tile[4].value === currentTurn && tile[8].value === currentTurn || 
+        tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
+            console.log(`Player ${currentTurn} wins!`)
+            promptRestart()
+        } 
 }
 
 function printTurn(){
