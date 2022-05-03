@@ -1,47 +1,20 @@
+// Class for TileObject
 class TileObject {
-  constructor(i) {
-    this.index = i
+  constructor() {
     this.used = false
     this.value = ""
   }
-
 }
 
-
-
+// Create listeners for every tiles
 const tile = document.querySelectorAll('.tile')
-
 tile.forEach((x) => x.addEventListener('click', tileClick))
 
-
-
-
-// tile.forEach((x,i) => const objTile = new TileObject(i))
-
-
-
-
-
-
-
-
-
-console.table(tile)
-
-const tileArr = Array.from(tile)
-
-console.table(tileArr)
-
-
-
-
-for(let x=0, )
-console.log(tile.length)
-
-
-
-// )
-
+// Create objects for every tile
+const tileArr = []
+for(i = 0; i < tile.length; i++) {
+  tileArr[i] = new TileObject()
+}
 
 function tileClick() {
   console.log(`clicked`)
@@ -50,7 +23,7 @@ function tileClick() {
 
 
 
-
+//TODO
 
 // onClick()
 // checkUsed()
