@@ -57,11 +57,9 @@ function onClick(i) {
   } else {
     tile[i].setValue(currentTurn)
     console.table(tile)
-    checkWin()
-    checkBoardFull()
+    checkGameEnd()
     changeTurn()
   }
-  
 }
 
 document.querySelector('#t0').addEventListener('click', tileClick0)
@@ -74,18 +72,29 @@ document.querySelector('#t6').addEventListener('click', tileClick6)
 document.querySelector('#t7').addEventListener('click', tileClick7)
 document.querySelector('#t8').addEventListener('click', tileClick8)
 
-function checkWin(){
-    if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
-        tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
-        tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
-        tile[0].value === currentTurn && tile[3].value === currentTurn && tile[6].value === currentTurn || 
-        tile[1].value === currentTurn && tile[4].value === currentTurn && tile[7].value === currentTurn || 
-        tile[2].value === currentTurn && tile[5].value === currentTurn && tile[8].value === currentTurn || 
-        tile[0].value === currentTurn && tile[4].value === currentTurn && tile[8].value === currentTurn || 
-        tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
-            console.log(`Player ${currentTurn} wins!`)
-            promptRestart()
-        } 
+function checkGameEnd(){
+  if (tile[0].value !== null && 
+    tile[1].value !== null && 
+    tile[2].value !== null && 
+    tile[3].value !== null && 
+    tile[4].value !== null && 
+    tile[5].value !== null && 
+    tile[6].value !== null && 
+    tile[7].value !== null && 
+    tile[8].value !== null){
+  console.log("Draw Game!")
+  promptRestart()
+  }else if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
+    tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
+    tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
+    tile[0].value === currentTurn && tile[3].value === currentTurn && tile[6].value === currentTurn || 
+    tile[1].value === currentTurn && tile[4].value === currentTurn && tile[7].value === currentTurn || 
+    tile[2].value === currentTurn && tile[5].value === currentTurn && tile[8].value === currentTurn || 
+    tile[0].value === currentTurn && tile[4].value === currentTurn && tile[8].value === currentTurn || 
+    tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
+  console.log(`Player ${currentTurn} wins!`)
+  promptRestart()
+  } 
 }
 
 function printTurn(){
@@ -114,21 +123,6 @@ function resetGame(){
 
 function changeTurn(){
   currentTurn = (currentTurn === 'X' ? 'O' : 'X')
-}
-
-function checkBoardFull() {
-  if (tile[0].value !== null && 
-      tile[1].value !== null && 
-      tile[2].value !== null && 
-      tile[3].value !== null && 
-      tile[4].value !== null && 
-      tile[5].value !== null && 
-      tile[6].value !== null && 
-      tile[7].value !== null && 
-      tile[8].value !== null){
-    endGame = true
-    promptRestart()
-  }
 }
 
 function promptRestart(){
