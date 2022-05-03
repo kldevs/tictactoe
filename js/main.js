@@ -12,6 +12,8 @@ class TileObject {
 
 }
 
+let endGame = false
+let currentTurn = 'X'
 // Selects all tiles
 const tileAll = document.querySelectorAll('.tile')
 // tile.forEach((x) => x.addEventListener('click', tileClick))
@@ -58,6 +60,7 @@ function onClick(i) {
     tile[i].setValue(currentTurn)
     checkWin()
     changeTurn()
+    checkBoardFull()
   }
 }
 
@@ -97,6 +100,7 @@ function printTurn(){
 }
 
 function resetGame(){
+  endGame = false
   currentTurn = 'X'
   tile[0].value = null
   tile[1].value = null
@@ -114,7 +118,28 @@ function changeTurn(){
   currentTurn = (currentTurn === 'X' ? 'O' : 'X')
 }
 
+function checkBoardFull() {
+  if (tile[0].value !== null && 
+      tile[1].value !== null && 
+      tile[2].value !== null && 
+      tile[3].value !== null && 
+      tile[4].value !== null && 
+      tile[5].value !== null && 
+      tile[6].value !== null && 
+      tile[7].value !== null && 
+      tile[8].value !== null){
+    endGame = true
+    promptRestart()
+  }
+}
 
+function promptRestart(){
+  let answer
+  do {
+    answer = prompt('Restart game?')
+  } while (answer !== 'y')
+  resetGame()
+}
 
 //TODO
 
