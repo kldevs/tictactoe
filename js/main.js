@@ -3,7 +3,7 @@ class TileObject {
   constructor() {
     this.value = ""
   }
-  setValue(){
+  setValue(currentTurn){
     this.value = currentTurn
   }
   getValue(){
@@ -55,21 +55,21 @@ function onClick(i) {
     console.log('Box taken. Please choose another box.')
   } else {
     console.log(`${currentTurn} clicked tile[${i}]`)
-    tile[i].value === currentTurn
+    tile[i].setValue(currentTurn)
     checkWin()
     changeTurn()
   }
 }
 
-document.querySelector('#t0').addEventListener('click', tileClick)
-document.querySelector('#t1').addEventListener('click', tileClick)
-document.querySelector('#t2').addEventListener('click', tileClick)
-document.querySelector('#t3').addEventListener('click', tileClick)
-document.querySelector('#t4').addEventListener('click', tileClick)
-document.querySelector('#t5').addEventListener('click', tileClick)
-document.querySelector('#t6').addEventListener('click', tileClick)
-document.querySelector('#t7').addEventListener('click', tileClick)
-document.querySelector('#t8').addEventListener('click', tileClick)
+document.querySelector('#t0').addEventListener('click', tileClick0)
+document.querySelector('#t1').addEventListener('click', tileClick1)
+document.querySelector('#t2').addEventListener('click', tileClick2)
+document.querySelector('#t3').addEventListener('click', tileClick3)
+document.querySelector('#t4').addEventListener('click', tileClick4)
+document.querySelector('#t5').addEventListener('click', tileClick5)
+document.querySelector('#t6').addEventListener('click', tileClick6)
+document.querySelector('#t7').addEventListener('click', tileClick7)
+document.querySelector('#t8').addEventListener('click', tileClick8)
 
 
 
