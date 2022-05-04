@@ -24,3 +24,12 @@ section {
   height: 100px;
   width: 100px;
 }
+
+#btnReset {
+  visibility: collapse;
+  background: white;
+  border: 5px solid black;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+}

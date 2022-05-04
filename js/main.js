@@ -2,6 +2,7 @@
 class TTTBoard{
   constructor(){
     this.tile = ["", "", "", "", "", "", "", "", ""]
+    this.winPattern = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
     this.currentPlayer = "X"
     this.gameEnded = false
     this.gameWinner = ""
@@ -55,6 +56,7 @@ class TTTBoard{
     for (let i = 0; i < this.tile.length; i++){
       this.tile[i] = ""  
     }
+    this.gameWinner = ""
     this.gameEnded = false
     console.log('New game started')
   }
@@ -90,6 +92,20 @@ function printBoard(){
   }
 }
 
+function showReset(){
+  document.querySelector('#btnReset').style.visibility ="visible"
+}
+
+function hideReset(){
+  document.querySelector('#btnReset').style.visibility ="collapse"
+}
+
+function clickReset(){
+  board.resetGame()
+  hideReset()
+  printBoard()
+}
+
 function onClick(i) {
   if(board.gameEnded === false){
     board.setTile(board.currentPlayer, i)
@@ -97,6 +113,7 @@ function onClick(i) {
     printCurrentPlayer()
     if(board.gameEnded === true){
       board.gameWinner === "" ? printTie() : printWinner()
+      showReset()
     }
   }
 }
@@ -114,3 +131,4 @@ document.querySelector('#t5').addEventListener('click', () => onClick(5))
 document.querySelector('#t6').addEventListener('click', () => onClick(6))
 document.querySelector('#t7').addEventListener('click', () => onClick(7))
 document.querySelector('#t8').addEventListener('click', () => onClick(8))
+document.querySelector('#btnReset').addEventListener('click', () => clickReset())
