@@ -111,6 +111,7 @@ function resetGame(){
   tile[7].value = null
   tile[8].value = null
   console.log('New game started')
+  printTurn()
 }
 
 function changeTurn(){
