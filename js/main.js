@@ -74,7 +74,17 @@ document.querySelector('#t7').addEventListener('click', tileClick7)
 document.querySelector('#t8').addEventListener('click', tileClick8)
 
 function checkGameEnd(){
-  if (tile[0].value !== null && 
+  if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
+    tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
+    tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
+    tile[0].value === currentTurn && tile[3].value === currentTurn && tile[6].value === currentTurn || 
+    tile[1].value === currentTurn && tile[4].value === currentTurn && tile[7].value === currentTurn || 
+    tile[2].value === currentTurn && tile[5].value === currentTurn && tile[8].value === currentTurn || 
+    tile[0].value === currentTurn && tile[4].value === currentTurn && tile[8].value === currentTurn || 
+    tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
+  document.querySelector('h2').innerText = `Player ${currentTurn} wins!`
+  resetGame()
+  } else if (tile[0].value !== null && 
     tile[1].value !== null && 
     tile[2].value !== null && 
     tile[3].value !== null && 
@@ -85,17 +95,7 @@ function checkGameEnd(){
     tile[8].value !== null){
   document.querySelector('h2').innerText = `Draw Game!`
   resetGame()
-  }else if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
-    tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
-    tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
-    tile[0].value === currentTurn && tile[3].value === currentTurn && tile[6].value === currentTurn || 
-    tile[1].value === currentTurn && tile[4].value === currentTurn && tile[7].value === currentTurn || 
-    tile[2].value === currentTurn && tile[5].value === currentTurn && tile[8].value === currentTurn || 
-    tile[0].value === currentTurn && tile[4].value === currentTurn && tile[8].value === currentTurn || 
-    tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
-  document.querySelector('h2').innerText = `Player ${currentTurn} wins!`
-  resetGame()
-  }
+  } 
 }
 
 function resetGame(){
