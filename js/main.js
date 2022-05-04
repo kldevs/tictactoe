@@ -98,15 +98,6 @@ function checkGameEnd(){
   } 
 }
 
-function printTurn(){
-  if (currentTurn === "X"){
-      console.log("Player X's turn...")
-  }
-  if (currentTurn === "O"){
-      console.log("Player O's turn...")
-  }    
-}
-
 function resetGame(){
   endGame = false
   currentTurn = 'X'
@@ -124,6 +115,16 @@ function resetGame(){
 
 function changeTurn(){
   currentTurn = (currentTurn === 'X' ? 'O' : 'X')
+  printTurn()
+}
+
+function printTurn(){
+  if (currentTurn === "X"){
+    document.querySelector('h3').innerText = "Player X's turn"
+  }
+  if (currentTurn === "O"){
+    document.querySelector('h3').innerText = "Player O's turn"
+  }
 }
 
 function promptRestart(){
