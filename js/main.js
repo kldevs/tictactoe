@@ -95,16 +95,9 @@ function checkGameEnd(){
 }
 
 function resetGame(){
-  currentTurn = 'X'
-  tile[0].value = null
-  tile[1].value = null
-  tile[2].value = null
-  tile[3].value = null
-  tile[4].value = null
-  tile[5].value = null
-  tile[6].value = null
-  tile[7].value = null
-  tile[8].value = null
+  for (let i = 0; i < tile.length; i++){
+    tile[i].value = null  
+  }
   console.log('New game started')
   printTurn()
 }
