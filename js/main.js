@@ -128,16 +128,11 @@ function printTurn(){
   }
 }
 
+//draw values to dom id
 function drawBoard() {
-  document.querySelector('#t0').innerText = tile[0].value
-  document.querySelector('#t1').innerText = tile[1].value
-  document.querySelector('#t2').innerText = tile[2].value
-  document.querySelector('#t3').innerText = tile[3].value
-  document.querySelector('#t4').innerText = tile[4].value
-  document.querySelector('#t5').innerText = tile[5].value
-  document.querySelector('#t6').innerText = tile[6].value
-  document.querySelector('#t7').innerText = tile[7].value
-  document.querySelector('#t8').innerText = tile[8].value
+  for (let i = 0; i < tile.length; i++){
+    document.querySelector(`#t${i}`).innerText = tile[i].value
+  }
 }
 
 //TODO
