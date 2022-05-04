@@ -9,15 +9,18 @@ html {
 section {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: space-between;
+  justify-content: space-around;
+  align-items: center;
   background: black;
-  width: 330px;
-  height: 330px;
+  width: 340px;
+  height: 340px;
 }
 
 .tile {
   background: white;
+  font-size: 100px;
+  text-align: center;
+  vertical-align: middle;
   height: 100px;
   width: 100px;
 }
