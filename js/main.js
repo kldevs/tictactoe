@@ -83,8 +83,8 @@ function checkGameEnd(){
     tile[6].value !== null && 
     tile[7].value !== null && 
     tile[8].value !== null){
-  console.log("Draw Game!")
-  promptRestart()
+  document.querySelector('h2').innerText = `Draw Game!`
+  resetGame()
   }else if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
     tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
     tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
@@ -93,9 +93,9 @@ function checkGameEnd(){
     tile[2].value === currentTurn && tile[5].value === currentTurn && tile[8].value === currentTurn || 
     tile[0].value === currentTurn && tile[4].value === currentTurn && tile[8].value === currentTurn || 
     tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
-  console.log(`Player ${currentTurn} wins!`)
-  promptRestart()
-  } 
+  document.querySelector('h2').innerText = `Player ${currentTurn} wins!`
+  resetGame()
+  }
 }
 
 function resetGame(){
@@ -126,14 +126,6 @@ function printTurn(){
   if (currentTurn === "O"){
     document.querySelector('h3').innerText = "Player O's turn"
   }
-}
-
-function promptRestart(){
-  let answer
-  do {
-    answer = prompt('Restart game?')
-  } while (answer !== 'y')
-  resetGame()
 }
 
 function drawBoard() {
