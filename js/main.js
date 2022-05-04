@@ -49,9 +49,7 @@ class TTTBoard{
       this.gameEnded = true
       console.log(`Tie Game!`)
     }
-
   }
-
   // resets all tiles back to "" value
   resetGame(){
     for (let i = 0; i < this.tile.length; i++){
@@ -73,7 +71,7 @@ class TTTBoard{
 const board = new TTTBoard()
 
 function printWinner(){
-  document.querySelector('h2').innerText = `Player ${board.winner} wins!`
+  document.querySelector('h2').innerText = `Player ${board.gameWinner} wins!`
 }
 
 function printTie(){
@@ -96,12 +94,14 @@ function printBoard(){
 }
 
 function onClick(i) {
+  if(board.gameEnded === false){
     board.setTile(board.currentPlayer, i)
     printBoard()
     printCurrentPlayer()
-    // printWinner()
-    // printTie()
-
+    if(board.gameEnded === true){
+      board.gameWinner === "" ? printTie() : printWinner()
+    }
+  }
 }
 
 // for(i = 0; i < board.tile.length; i++){
