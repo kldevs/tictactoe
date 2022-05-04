@@ -6,12 +6,8 @@ class TileObject {
   setValue(currentTurn){
     this.value = currentTurn
   }
-  getValue(){
-    return this.value
-  }
 }
 
-let endGame = false
 let currentTurn = 'X'
 // Selects all tiles
 const tileAll = document.querySelectorAll('.tile')
@@ -99,7 +95,6 @@ function checkGameEnd(){
 }
 
 function resetGame(){
-  endGame = false
   currentTurn = 'X'
   tile[0].value = null
   tile[1].value = null
@@ -128,7 +123,7 @@ function printTurn(){
   }
 }
 
-//draw values to dom id
+//draw values to tile id
 function drawBoard() {
   for (let i = 0; i < tile.length; i++){
     document.querySelector(`#t${i}`).innerText = tile[i].value
