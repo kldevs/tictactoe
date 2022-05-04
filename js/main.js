@@ -70,6 +70,8 @@ class TTTBoard{
 
 const board = new TTTBoard()
 
+printCurrentPlayer()
+
 function printWinner(){
   document.querySelector('h2').innerText = `Player ${board.gameWinner} wins!`
 }
@@ -79,12 +81,7 @@ function printTie(){
 }
 
 function printCurrentPlayer(){
-  if (board.currentPlayer === "X"){
-    document.querySelector('h3').innerText = "Player X's turn"
-  }
-  if (board.currentPlayer === "O"){
-    document.querySelector('h3').innerText = "Player O's turn"
-  }
+  document.querySelector('h3').innerText = `Player ${board.currentPlayer}'s turn`
 }
 
 function printBoard(){
