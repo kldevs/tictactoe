@@ -70,6 +70,7 @@ document.querySelector('#t7').addEventListener('click', tileClick7)
 document.querySelector('#t8').addEventListener('click', tileClick8)
 
 function checkGameEnd(){
+  // winning conditions
   if (tile[0].value === currentTurn && tile[1].value === currentTurn && tile[2].value === currentTurn || 
     tile[3].value === currentTurn && tile[4].value === currentTurn && tile[5].value === currentTurn || 
     tile[6].value === currentTurn && tile[7].value === currentTurn && tile[8].value === currentTurn || 
@@ -80,6 +81,7 @@ function checkGameEnd(){
     tile[2].value === currentTurn && tile[4].value === currentTurn && tile[6].value === currentTurn){
   document.querySelector('h2').innerText = `Player ${currentTurn} wins!`
   resetGame()
+  // game ends in a tie with no moves left
   } else if (tile[0].value !== null && 
     tile[1].value !== null && 
     tile[2].value !== null && 
@@ -89,11 +91,12 @@ function checkGameEnd(){
     tile[6].value !== null && 
     tile[7].value !== null && 
     tile[8].value !== null){
-  document.querySelector('h2').innerText = `Draw Game!`
+  document.querySelector('h2').innerText = `Tie Game!`
   resetGame()
   } 
 }
 
+// resets all tiles back to null value
 function resetGame(){
   for (let i = 0; i < tile.length; i++){
     tile[i].value = null  
@@ -122,11 +125,3 @@ function drawBoard() {
     document.querySelector(`#t${i}`).innerText = tile[i].value
   }
 }
-
-//TODO
-
-// onClick()
-// checkUsed()
-// setValue()
-// checkWin()
-// checkBoardFull()
