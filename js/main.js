@@ -92,17 +92,19 @@ function printBoard(){
   }
 }
 
-function showReset(){
-  document.querySelector('#btnReset').style.visibility ="visible"
+function showElement(item){
+  document.querySelector(`${item}`).style.visibility ="visible"
 }
 
-function hideReset(){
-  document.querySelector('#btnReset').style.visibility ="collapse"
+function hideElement(item){
+  document.querySelector(`${item}`).style.visibility ="collapse"
 }
 
 function clickReset(){
   board.resetGame()
-  hideReset()
+  hideElement("#btnReset")
+  hideElement("h2")
+  showElement("h3")
   printBoard()
 }
 
@@ -113,7 +115,9 @@ function onClick(i) {
     printCurrentPlayer()
     if(board.gameEnded === true){
       board.gameWinner === "" ? printTie() : printWinner()
-      showReset()
+      hideElement("h3")
+      showElement("h2")
+      showElement("#btnReset")
     }
   }
 }
