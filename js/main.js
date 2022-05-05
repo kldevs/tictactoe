@@ -70,9 +70,13 @@ class TTTBoard{
 // Code above will handle logic
 // Code below will manipulate DOM
 
-const board = new TTTBoard()
-
-printCurrentPlayer()
+function onLoad(){
+  for(let i = 0; i < board.tile.length; i++){
+    document.querySelector(`#t${i}`).addEventListener('click', () => onClick(i))
+  }
+  document.querySelector('#btnReset').addEventListener('click', () => clickReset())
+  printCurrentPlayer()
+}
 
 function printWinner(){
   document.querySelector('h2').innerText = `Player ${board.gameWinner} wins!`
@@ -120,19 +124,8 @@ function onClick(i) {
       showElement("#btnReset")
     }
   }
+  return i
 }
 
-// for(i = 0; i < board.tile.length; i++){
-//   document.querySelector(`#t${i}`).addEventListener('click', onClick(i))
-// }
-
-document.querySelector('#t0').addEventListener('click', () => onClick(0))
-document.querySelector('#t1').addEventListener('click', () => onClick(1))
-document.querySelector('#t2').addEventListener('click', () => onClick(2))
-document.querySelector('#t3').addEventListener('click', () => onClick(3))
-document.querySelector('#t4').addEventListener('click', () => onClick(4))
-document.querySelector('#t5').addEventListener('click', () => onClick(5))
-document.querySelector('#t6').addEventListener('click', () => onClick(6))
-document.querySelector('#t7').addEventListener('click', () => onClick(7))
-document.querySelector('#t8').addEventListener('click', () => onClick(8))
-document.querySelector('#btnReset').addEventListener('click', () => clickReset())
+const board = new TTTBoard()
+onLoad()
