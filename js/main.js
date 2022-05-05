@@ -43,6 +43,7 @@ class TTTBoard{
       return true
     }
   }
+
   // resets all tiles back to "" value
   resetGame(){
     for (let i = 0; i < this.tile.length; i++){
@@ -88,18 +89,19 @@ function printBoard(){
   }
 }
 
-function showElement(item){
-  document.querySelector(`${item}`).style.visibility ="visible"
+function showElement(...item){
+  for(let i of item)
+    document.querySelector(`${i}`).style.visibility ="visible"
 }
 
-function hideElement(item){
-  document.querySelector(`${item}`).style.visibility ="collapse"
+function hideElement(...item){
+  for(let i of item)
+    document.querySelector(`${i}`).style.visibility ="collapse"
 }
 
 function clickReset(){
   board.resetGame()
-  hideElement("#btnReset")
-  hideElement("h2")
+  hideElement("#btnReset", "h2")
   showElement("h3")
   printBoard()
 }
@@ -112,8 +114,7 @@ function onClick(i) {
     if(board.gameEnded === true){
       board.gameWinner === "" ? printTie() : printWinner()
       hideElement("h3")
-      showElement("h2")
-      showElement("#btnReset")
+      showElement("h2", "#btnReset")
     }
   }
 }
