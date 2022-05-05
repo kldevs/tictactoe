@@ -22,16 +22,11 @@ class TTTBoard{
 
   // check winning conditions
   checkGameWin(){
-    if (this.tile[0] === this.currentPlayer && this.tile[1] === this.currentPlayer && this.tile[2] === this.currentPlayer || 
-        this.tile[3] === this.currentPlayer && this.tile[4] === this.currentPlayer && this.tile[5] === this.currentPlayer || 
-        this.tile[6] === this.currentPlayer && this.tile[7] === this.currentPlayer && this.tile[8] === this.currentPlayer || 
-        this.tile[0] === this.currentPlayer && this.tile[3] === this.currentPlayer && this.tile[6] === this.currentPlayer || 
-        this.tile[1] === this.currentPlayer && this.tile[4] === this.currentPlayer && this.tile[7] === this.currentPlayer || 
-        this.tile[2] === this.currentPlayer && this.tile[5] === this.currentPlayer && this.tile[8] === this.currentPlayer || 
-        this.tile[0] === this.currentPlayer && this.tile[4] === this.currentPlayer && this.tile[8] === this.currentPlayer || 
-        this.tile[2] === this.currentPlayer && this.tile[4] === this.currentPlayer && this.tile[6] === this.currentPlayer){
-      this.gameWinner = this.currentPlayer
-      return true
+    for(let i of this.winPattern){
+      if (this.tile[i[0]] === this.tile[i[1]] && this.tile[i[1]] === this.tile[i[2]] && this.tile[i[2]] === this.currentPlayer){
+        this.gameWinner = this.currentPlayer
+        return true
+      }
     }
   }
   
@@ -124,7 +119,6 @@ function onClick(i) {
       showElement("#btnReset")
     }
   }
-  return i
 }
 
 const board = new TTTBoard()
