@@ -38,12 +38,9 @@ class TTTBoard{
   }
 
   checkGameEnd(){
-    if(this.checkGameWin()){
+    if(this.checkGameWin() || this.checkGameTie()){
       this.gameEnded = true
-      console.log(`Player ${this.gameWinner} Wins!`)
-    } else if(this.checkGameTie()){
-      this.gameEnded = true
-      console.log(`Tie Game!`)
+      return true
     }
   }
   // resets all tiles back to "" value
