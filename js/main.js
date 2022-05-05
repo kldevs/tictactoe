@@ -87,14 +87,12 @@ function printBoard(){
   }
 }
 
-function showElement(...item){
-  for(let i of item)
-    document.querySelector(`${i}`).style.visibility ="visible"
+function showElement(...elements){
+  elements.forEach(x => document.querySelector(`${x}`).style.visibility ="visible")
 }
 
-function hideElement(...item){
-  for(let i of item)
-    document.querySelector(`${i}`).style.visibility ="collapse"
+function hideElement(...elements){
+  elements.forEach(x => document.querySelector(`${x}`).style.visibility ="collapse")
 }
 
 function clickReset(){
