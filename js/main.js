@@ -44,11 +44,9 @@ class TTTBoard{
     }
   }
 
-  // resets all tiles back to "" value
+  // resets properties to initial values
   resetGame(){
-    for (let i = 0; i < this.tile.length; i++){
-      this.tile[i] = ""  
-    }
+    this.tile = this.tile.fill("", 0)
     this.gameWinner = ""
     this.gameEnded = false
     console.log('New game started')
