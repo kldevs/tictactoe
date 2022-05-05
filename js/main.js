@@ -6,6 +6,7 @@ class TTTBoard{
     this.currentPlayer = "X"
     this.gameEnded = false
     this.gameWinner = ""
+    this.gameResult = ""
   }
 
   setTile(currentPlayer, i){
@@ -25,7 +26,7 @@ class TTTBoard{
     for(let i of this.winPattern){
       if (this.tile[i[0]] === this.tile[i[1]] && this.tile[i[1]] === this.tile[i[2]] && this.tile[i[2]] === this.currentPlayer){
         this.gameWinner = this.currentPlayer
-        return true
+        return `Player ${this.gameWinner} wins!`
       }
     }
   }
@@ -33,13 +34,14 @@ class TTTBoard{
   // game ends in a tie with no moves left
   checkGameTie(){
     if (this.tile.filter((x) => x === "").length === 0 && !this.checkGameWin()){
-      return true
+      return `Tie Game!`
     }
   }
 
   checkGameEnd(){
     if(this.checkGameWin() || this.checkGameTie()){
       this.gameEnded = true
+      this.gameResult = this.checkGameWin() || this.checkGameTie()
       return true
     }
   }
@@ -48,6 +50,7 @@ class TTTBoard{
   resetGame(){
     this.tile = this.tile.fill("", 0)
     this.gameWinner = ""
+    this.gameResult = ""
     this.gameEnded = false
     console.log('New game started')
   }
@@ -69,12 +72,8 @@ function onLoad(){
   printCurrentPlayer()
 }
 
-function printWinner(){
-  document.querySelector('h2').innerText = `Player ${board.gameWinner} wins!`
-}
-
-function printTie(){
-  document.querySelector('h2').innerText = `Tie Game!`
+function printResult(result){
+  document.querySelector('h2').innerText = result
 }
 
 function printCurrentPlayer(){
@@ -108,7 +107,7 @@ function onClick(i) {
     printBoard()
     printCurrentPlayer()
     if(board.gameEnded === true){
-      board.gameWinner === "" ? printTie() : printWinner()
+      printResult(board.gameResult)
       hideElement("h3")
       showElement("h2", "#btnReset")
     }
