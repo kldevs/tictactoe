@@ -4,4 +4,4 @@
 
 Made with HTML, CSS, JavaScript. 
 
-Practicing flexbox and transitioning from functional programming to utilizing OOP principles.
+Practicing flexbox, inserting JS event listeners into the DOM, and transitioning from functional programming to utilizing OOP principles.
